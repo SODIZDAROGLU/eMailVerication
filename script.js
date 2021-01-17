@@ -3,7 +3,6 @@ const form = document.getElementById("form");
 const email = document.getElementById("email");
 let emails = [];
 
-
 form.addEventListener("submit", function (e) {
     e.preventDefault();
   let messages = []; 
@@ -18,8 +17,19 @@ form.addEventListener("submit", function (e) {
   document.getElementById("form").reset(); //clear form
   //Display
   console.log("added", { emails });
-  let pre = document.querySelector("#msg pre");
-  pre.textContent = "\n" + JSON.stringify(emails, "\t", 2);
+  
+  
+  
+  // let pre = document.querySelector("#msg pre");
+  // pre.textContent = "\n" + JSON.stringify(emails, "\t", 2);
   //   saving to LocalStorage
   //    localStorage.setItem('MyMovieList',JSON.stringify(emails));
+  //var newEmail={email:email};
+   
+   
+   
+
+
+  
 });
+
