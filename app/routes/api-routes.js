@@ -18,9 +18,9 @@ module.exports = function(app) {
     console.log("Member Data:");
     console.log(req.body);
 
-    var dbQuery = "INSERT INTO members (email) VALUES (?)";
+    var dbQuery = "INSERT INTO members (email,created_at) VALUES (?,?)";
 
-    connection.query(dbQuery, [req.body.email] , function(err, result) {
+    connection.query(dbQuery, [req.body.email, req.body.created_at] , function(err, result) {
       if (err) throw err;
       console.log("Email Successfully Saved!");
       res.end();

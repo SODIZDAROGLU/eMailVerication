@@ -1,35 +1,40 @@
-const errorElement = document.getElementById("error");
-const form = document.getElementById("form");
-const email = document.getElementById("email");
-let emails = [];
+$("#form").on("submit", function(event) {
+    event.preventDefault();
+    var email = $('#email').val();
+    if(IsEmail(email)==false){
+      $('#error').html("You have entered an invalid email address!");
+      $("#email").val("");
+  
+      return false;
+   
+ }else{
 
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
-  let messages = []; 
-  var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-  if (!filter.test(email.value)) 
-  messages.push("You have entered an invalid email address!");
-  else emails.push(email.value);
+   var newMember = {
+   email:  $("#email").val().trim()
 
-  if (messages.length > 0) {
-    errorElement.innerText = messages.join(",");
+   }
+   
+  
+ }
+    // Make a new object
+  
+    console.log(newMember);
+  
+    // Send an AJAX POST-request with jQuery
+    $.post("/api/new", newMember)
+      // On success, run the following code
+      .then(function() {
+       });
+  
+    // Empty each input box by replacing the value with an empty string
+    $("#email").val("");
+  
+  });
+  function IsEmail(email) {
+    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if(!regex.test(email)) {
+      return false;
+    }else{
+      return true;
+    }
   }
-  document.getElementById("form").reset(); //clear form
-  //Display
-  console.log("added", { emails });
-  
-  
-  
-  // let pre = document.querySelector("#msg pre");
-  // pre.textContent = "\n" + JSON.stringify(emails, "\t", 2);
-  //   saving to LocalStorage
-  //    localStorage.setItem('MyMovieList',JSON.stringify(emails));
-  //var newEmail={email:email};
-   
-   
-   
-
-
-  
-});
-

@@ -10,8 +10,8 @@ $("#form").on("submit", function(event) {
  }else{
 
    var newMember = {
-   email:  $("#email").val().trim()
-
+   email:  $("#email").val().trim(),
+   created_at: moment().format("YYYY-MM-DD HH:mm:ss")
    }
    
   
@@ -24,10 +24,7 @@ $("#form").on("submit", function(event) {
     $.post("/api/new", newMember)
       // On success, run the following code
       .then(function() {
-       
-       
-  
-      });
+       });
   
     // Empty each input box by replacing the value with an empty string
     $("#email").val("");
