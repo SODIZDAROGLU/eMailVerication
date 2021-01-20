@@ -10,7 +10,8 @@ $("#form").on("submit", function(event) {
  }else{
 
    var newMember = {
-   email:  $("#email").val().trim()
+   email:  $("#email").val().trim(),
+   created_at: moment().format("YYYY-MM-DD HH:mm:ss")
 
    }
    
